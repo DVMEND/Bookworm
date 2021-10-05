@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+[Software License](software-license)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Software license for this software:
 
-## Available Scripts
+![Welcome to Book Worm](/assets/images/3.png)
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Welcome to Book Worm
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+GNU License
 
-### `npm test`
+gnu.org/licenses/gpl.html
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  
+[Description of this software](description)
 
-### `npm run build`
+Book Worm is a book discovery web app. Looking for a new book to read? Book Worm can help you find something new or stick to your trusted genres
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[User Story](user-story) 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+AS A book reader 
 
-### `npm run eject`
+I WANT to find new or existing trusted genres of books to read 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+SO THAT I can fill up my library with more books to consume
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+[Acceptance Criteria](acceptance-criteria)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+TO BE DISCUSSED WITH GROUP
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can view the software's web page at this link. [Welcome to Book Worm](https://github.com/DVMEND/Bookworm)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Three Key Technologies Used, if any](key-technologies-used)
 
-### Code Splitting
+ReactJS 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+What ReactJS  is used for:
 
-### Analyzing the Bundle Size
+ReactJS is used to package application and generate HTML/CSS/Bootstrap code
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+NodeJS
 
-### Making a Progressive Web App
+What NodeJS is used for:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+NodeJS is used to generate an HTML page of the recommended books
 
-### Advanced Configuration
+TO BE DISCUSSED
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+What TO BE DISCUSSED is used for:
 
-### Deployment
+TO BE DISCUSSED
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+[How to use and install this open source software](how-to-install)
 
-### `npm run build` fails to minify
+From Github, you can download the source code by clicking on the Code button and download the zip file here: https://www.github.com/calcomsci
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You will need a code editor to view the source code. You may try Visual Studio Code. You may download Visual Studio Code here: https://code.visualstudio.com/Download
+
+You will probably need node.js to install packages from the source code. You may download node.js here: https://nodejs.org/en/download/
+
+[Contact for Comments, Concerns, Questions, etc.](contact)
+
+If you wish to contribute to this open source software, please contact me, and/or fork this on Github
+
+[Contact for Comments, Concerns, Questions, etc.](contact)
+
+You can visit my Github profile (where you should have found out about this software) at: https://www.github.com/calcomsci
+
+You can write an e-mail to calcomsci@outlook.com 
