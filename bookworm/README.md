@@ -56,7 +56,7 @@ TO BE DISCUSSED
 
 [How to use and install this open source software](how-to-install)
 
-From Github, you can download the source code by clicking on the Code button and download the zip file here: https://www.github.com/calcomsci
+From Github, you can download the source code by clicking on the Code button and download the zip file here: https://github.com/DVMEND/Bookworm
 
 You will need a code editor to view the source code. You may try Visual Studio Code. You may download Visual Studio Code here: https://code.visualstudio.com/Download
 
@@ -68,6 +68,6 @@ If you wish to contribute to this open source software, please contact me, and/o
 
 [Contact for Comments, Concerns, Questions, etc.](contact)
 
-You can visit my Github profile (where you should have found out about this software) at: https://www.github.com/calcomsci
+You can visit my Github profile (where you should have found out about this software) at: https://github.com/DVMEND/Bookworm
 
 You can write an e-mail to calcomsci@outlook.com 
