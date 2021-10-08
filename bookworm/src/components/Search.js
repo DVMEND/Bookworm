@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import ReactDOMServer from 'react-dom/server';
+
 
 const Search = () => {
-  const [term, setTerm] = useState("tolkien")
+  const [term, setTerm] = useState("")
   const [results, setResults] = useState([])
 
   useEffect(() => {
@@ -18,12 +20,17 @@ const Search = () => {
   }, [term])
 
   const searchResultsMapped = results.map(result => {
+
+    const article = {
+      url : ReactDOMServer.renderToStaticMarkup((result.isbn && result.isbn.length) ? "http://covers.openlibrary.org/b/isbn/" + result.isbn[0] + "-M.jpg":"")
+    }
+
     return (
-      <div className="item" key={result.isbn}>
+      <div className="item" key={result.title}>
         <div className="content">
-          <div className="header">{result.title}</div>
+          <div className="header"><strong>{result.title}</strong></div>
         </div>
-        {result.isbn}
+        <img src={article.url}></img>
       </div>
     )
   })
@@ -32,7 +39,12 @@ const Search = () => {
     <div>
       <div className="ui form">
         <div className="field">
-          <label>Search Term</label>
+          <label>Search </label>
+          <select 
+            id="searchBy">
+            <option value="author">Author</option>
+            <option value="title">Title</option>
+          </select>
           <input
             className="input"
             value={term}
