@@ -1,16 +1,19 @@
-[Software License](software-license)
-
 Software license for this software:
-
-![Welcome to Book Worm](/assets/images/3.png)
-
-
-
-# Welcome to Book Worm
-
-GNU License
-
 gnu.org/licenses/gpl.html
+GNU License
+![Software License](3.png)
+
+
+
+# Welcome to Book Worm!
+
+![Welcome to Book Worm](bookworm.png)
+
+
+
+
+
+
 
   
 [Description of this software](description)
@@ -27,11 +30,6 @@ I WANT to find new or existing trusted genres of books to read
 SO THAT I can fill up my library with more books to consume
 
 
-[Acceptance Criteria](acceptance-criteria)
-
-TO BE DISCUSSED WITH GROUP
-
-
 You can view the software's web page at this link. [Welcome to Book Worm](https://github.com/DVMEND/Bookworm)
 
 [Three Key Technologies Used, if any](key-technologies-used)
@@ -42,21 +40,15 @@ What ReactJS  is used for:
 
 ReactJS is used to package application and generate HTML/CSS/Bootstrap code
 
-NodeJS
+MUI
 
-What NodeJS is used for:
+What MUI is used for:
 
-NodeJS is used to generate an HTML page of the recommended books
-
-TO BE DISCUSSED
-
-What TO BE DISCUSSED is used for:
-
-TO BE DISCUSSED
+MUI is used as a supplementary companion for CSS
 
 [How to use and install this open source software](how-to-install)
 
-From Github, you can download the source code by clicking on the Code button and download the zip file here: https://github.com/DVMEND/Bookworm
+From Github, you can download the source code by clicking on the Code button and download the zip file here: https://www.github.com/DVMEND/Boookworm
 
 You will need a code editor to view the source code. You may try Visual Studio Code. You may download Visual Studio Code here: https://code.visualstudio.com/Download
 
@@ -68,6 +60,6 @@ If you wish to contribute to this open source software, please contact me, and/o
 
 [Contact for Comments, Concerns, Questions, etc.](contact)
 
-You can visit my Github profile (where you should have found out about this software) at: https://github.com/DVMEND/Bookworm
+You can visit my Github profile (where you should have found out about this software) at: https://www.github.com/DVMEND/Bookworm
 
 You can write an e-mail to calcomsci@outlook.com 
