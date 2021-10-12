@@ -1,7 +1,11 @@
 Software license for this software:
+
+![Welcome to Book Worm](assets/3.png)
+
 gnu.org/licenses/gpl.html
 GNU License
 ![Software License](3.png)
+
 
 
 
