@@ -1,11 +1,10 @@
 Software license for this software:
 gnu.org/licenses/gpl.html
+
 GNU License
 ![Software License](3.png)
+# Welcome to Book Worm!
 
-
-
-# Welcome to Book Worm
 
 ![Welcome to Book Worm](bookworm.png)
 
@@ -49,7 +48,6 @@ MUI is used as a supplementary companion for CSS
 [How to use and install this open source software](how-to-install)
 
 
-=======
 From Github, you can download the source code by clicking on the Code button and download the zip file here: https://github.com/DVMEND/Bookworm
 
 You will need a code editor to view the source code. You may try Visual Studio Code. You may download Visual Studio Code here: https://code.visualstudio.com/Download
@@ -60,11 +58,8 @@ You will probably need node.js to install packages from the source code. You may
 
 If you wish to contribute to this open source software, please contact me, and/or fork this on Github
 
-[Contact for Comments, Concerns, Questions, etc.](contact)
-
 
 You can visit my Github profile (where you should have found out about this software) at: https://www.github.com/DVMEND/Bookworm
-=======
 
 
 You can write an e-mail to calcomsci@outlook.com 
