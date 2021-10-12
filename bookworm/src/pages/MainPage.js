@@ -29,17 +29,42 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function MainPage() {
     const [term, setTerm] = useState("")
     const [results, setResults] = useState([])
+    const [subjectResults, setSubjectResults] = useState([])
   
     useEffect(() => {
       const search = async () => {
         const { data } = await axios.get("https://openlibrary.org/search.json", {
-          params: { author: term},
+          params: { q: term, limit: 10 },
         })
         setResults(data.docs)
         console.log(results)
       }
       search()
     }, [term])
+
+    function handleImgClick (strSubject) {
+        console.log (strSubject)
+        axios.get("https://openlibrary.org/subjects/" + strSubject.toLowerCase().replace(/ /g,"_") + ".json?limit=10")
+        .then(res => {
+          const subjectSearch = res.data;
+          setSubjectResults(subjectSearch.works)
+          console.log(subjectSearch.works) 
+        })  
+    }
+    const subjectResultsMapped = subjectResults.map(subjectResult => {
+        const subjectArticle = {
+            subjectUrl : "http://covers.openlibrary.org/b/id/" + subjectResult.cover_id + "-M.jpg"
+          }
+
+        return (
+            <>
+            <Grid key={subjectResult.key} item xs={12} md={5}>
+                <Item>{subjectResult.title}</Item>
+                <Item><img alt="cover image" src={subjectArticle.subjectUrl}></img></Item>
+            </Grid>
+            </>
+        )
+    })
 
     const searchResultsMapped = results.map(result => {
 
@@ -51,7 +76,7 @@ export default function MainPage() {
             <>
             <Grid key={result.key} item xs={12} md={5}>
                 <Item>{result.title}</Item>
-                <Item><img alt="" src={article.url}></img></Item>
+                <Item><img alt="" src={article.url} data-subject={result.subject} onClick={() => handleImgClick(result.subject[0])}></img></Item>
             </Grid>
             </>
         )
@@ -72,7 +97,7 @@ export default function MainPage() {
                 </Grid>
                 <Grid item xs={12} container spacing={2}>
                     <Grid item xs={12} md={4}>
-                        <Item>Recomendations</Item>
+                    {subjectResultsMapped}
                     </Grid>
                 </Grid>
                 <Grid item xs={12} container spacing={2}>
