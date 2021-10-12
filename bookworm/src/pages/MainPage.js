@@ -32,14 +32,19 @@ export default function MainPage() {
     const [subjectResults, setSubjectResults] = useState([])
   
     useEffect(() => {
-      const search = async () => {
-        const { data } = await axios.get("https://openlibrary.org/search.json", {
-          params: { q: term, limit: 10 },
-        })
-        setResults(data.docs)
-        console.log(results)
-      }
-      search()
+        let cancel
+        axios ({
+            method: 'GET',
+            url: "https://openlibrary.org/search.json", 
+            params: { q: term, limit: 10 },
+            cancelToken: new axios.CancelToken( c => cancel = c)
+        }).then (res => {
+                console.log(res.data.docs)
+                setResults(res.data.docs) 
+            }).catch(e => {
+                if (axios.isCancel(e)) return
+            })
+            return () => cancel()        
     }, [term])
 
     function handleImgClick (strSubject) {
@@ -93,7 +98,7 @@ export default function MainPage() {
             <TextField id="term" label="Search" variant="outlined" onChange={handleChange}/>
             <Grid container spacing={2}>
                 <Grid item xs={12} container spacing={2}>
-                    {searchResultsMapped}
+                    {searchResultsMapped}           
                 </Grid>
                 <Grid item xs={12} container spacing={2}>
                     <Grid item xs={12} md={4}>
