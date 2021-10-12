@@ -1,11 +1,18 @@
 Software license for this software:
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-gnu.org/licenses/gpl.html
 
 GNU License
+
+
+
+
+
+
+
+gnu.org/licenses/gpl.html
+
+
+
+
 ![Software License](3.png)
 # Welcome to Book Worm!
 
@@ -41,9 +48,15 @@ ReactJS
 
 What ReactJS  is used for:
 
-ReactJS is used to package application and generate HTML/CSS/Bootstrap code
+ReactJS is used to package the application and generate HTML/CSS
 
-MUI
+Netlify
+
+What Netlify is used for:
+
+Netlify is used to enable ReactJS functions in the app as a live page, so users won't have to download the repository and use the service online.
+
+Material UI (MUI)
 
 What MUI is used for:
 
@@ -62,12 +75,8 @@ You will probably need node.js to install packages from the source code. You may
 
 If you wish to contribute to this open source software, please contact me, and/or fork this on Github
 
-<<<<<<< Updated upstream
+
 
 You can visit my Github profile (where you should have found out about this software) at: https://www.github.com/DVMEND/Bookworm
-
-=======
-You can visit my Github profile (where you should have found out about this software) at: https://www.github.com/DVMEND/Bookworm
->>>>>>> Stashed changes
 
 You can write an e-mail to calcomsci@outlook.com for questions about this README file
