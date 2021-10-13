@@ -95,8 +95,10 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function MainPage() {
     const [term, setTerm] = useState("")
     const [results, setResults] = useState([])
+    const [subjectResults, setSubjectResults] = useState([])
   
     useEffect(() => {
+      //This block of code is causing merge conflict
       const search = async () => {
         const { data } = await axios.get("https://openlibrary.org/search.json", {
             params: { q: term, limit: 24 },
@@ -105,7 +107,47 @@ export default function MainPage() {
         console.log(results)
       }
       search()
+      //Block of code ends here
+      
+        let cancel
+        axios ({
+            method: 'GET',
+            url: "https://openlibrary.org/search.json", 
+            params: { q: term, limit: 10 },
+            cancelToken: new axios.CancelToken( c => cancel = c)
+        }).then (res => {
+                console.log(res.data.docs)
+                setResults(res.data.docs) 
+            }).catch(e => {
+                if (axios.isCancel(e)) return
+            })
+            return () => cancel()        
+
     }, [term])
+
+    function handleImgClick (strSubject) {
+        console.log (strSubject)
+        axios.get("https://openlibrary.org/subjects/" + strSubject.toLowerCase().replace(/ /g,"_") + ".json?limit=10")
+        .then(res => {
+          const subjectSearch = res.data;
+          setSubjectResults(subjectSearch.works)
+          console.log(subjectSearch.works) 
+        })  
+    }
+    const subjectResultsMapped = subjectResults.map(subjectResult => {
+        const subjectArticle = {
+            subjectUrl : "http://covers.openlibrary.org/b/id/" + subjectResult.cover_id + "-M.jpg"
+          }
+
+        return (
+            <>
+            <Grid key={subjectResult.key} item xs={12} md={5}>
+                <Item>{subjectResult.title}</Item>
+                <Item><img alt="cover image" src={subjectArticle.subjectUrl}></img></Item>
+            </Grid>
+            </>
+        )
+    })
 
     const searchResultsMapped = results.map(result => {
 
@@ -115,6 +157,7 @@ export default function MainPage() {
         
         return (
             <>
+
             
             <Grid  item xs={12} md={1} rows={1} sx=
             {{display:'flex',
@@ -144,6 +187,11 @@ export default function MainPage() {
                     </ImageListItem>
                     
                </ImageList>
+
+            <Grid key={result.key} item xs={12} md={5}>
+                <Item>{result.title}</Item>
+                <Item><img alt="" src={article.url} data-subject={result.subject} onClick={() => handleImgClick(result.subject[0])}></img></Item>
+
             </Grid>
         
             </>
@@ -156,6 +204,7 @@ export default function MainPage() {
     }
 
     return (
+
         <Box sx={{ flexGrow: 1} }>
         
         <AppBar position="static" style={{ background: '#A37C4D' }}>
@@ -209,6 +258,28 @@ export default function MainPage() {
                             </Typography>
                         </Item>
                             
+
+        <Box sx={{ flexGrow: 1 }}
+        >
+            <TextField id="term" label="Search" variant="outlined" onChange={handleChange}/>
+            <Grid container spacing={2}>
+                <Grid item xs={12} container spacing={2}>
+                    {searchResultsMapped}           
+                </Grid>
+                <Grid item xs={12} container spacing={2}>
+                    <Grid item xs={12} md={4}>
+                    {subjectResultsMapped}
+                    </Grid>
+                </Grid>
+                <Grid item xs={12} container spacing={2}>
+                    <Grid item xs={6} md={3}>
+                        <BookCard/>
+                    </Grid>
+                </Grid>
+                <Grid item xs={12} container spacing={2}>
+                    <Grid item xs = {12} md={4}>
+                        <Item>Other Works By Author</Item>
+
                     </Grid>
                 </Grid>
                 <Grid item xs={12} container spacing={2}>
