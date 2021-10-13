@@ -4,15 +4,8 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import BookCard from '../components/bookCard';
 import Search from "../components/Search";
-import SingleLineGridList from "../components/gridList";
-//import withRoot from '../components/backgroundImage';
-//import background from 'booskworm/assets/backgroundImage.png'
-import BackgroundImagePage from '../components/background';
 import '../index.css'
-//import Carousel from 'react-material-ui-carousel';
-//import MyProjectsExample from '../components/carousel';
 import { ImageList, Typography } from "@mui/material";
 import { ImageListItem } from "@mui/material";
 import { ImageListItemBar } from "@mui/material";
@@ -30,6 +23,7 @@ import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import logo from '../assets/bookworm.png';
 
 const SearchField = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -74,13 +68,6 @@ const SearchField = styled('div')(({ theme }) => ({
   }));
 
 
-
-
-
-
-
-
-
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
     padding: theme.spacing(1),
@@ -97,23 +84,12 @@ export default function MainPage() {
     const [results, setResults] = useState([])
     const [subjectResults, setSubjectResults] = useState([])
   
-    useEffect(() => {
-      //This block of code is causing merge conflict
-      const search = async () => {
-        const { data } = await axios.get("https://openlibrary.org/search.json", {
-            params: { q: term, limit: 24 },
-        })
-        setResults(data.docs)
-        console.log(results)
-      }
-      search()
-      //Block of code ends here
-      
+    useEffect(() => {  
         let cancel
         axios ({
             method: 'GET',
             url: "https://openlibrary.org/search.json", 
-            params: { q: term, limit: 10 },
+            params: { q: term, limit: 24 },
             cancelToken: new axios.CancelToken( c => cancel = c)
         }).then (res => {
                 console.log(res.data.docs)
@@ -141,9 +117,31 @@ export default function MainPage() {
 
         return (
             <>
-            <Grid key={subjectResult.key} item xs={12} md={5}>
-                <Item>{subjectResult.title}</Item>
-                <Item><img alt="cover image" src={subjectArticle.subjectUrl}></img></Item>
+            <Grid item xs={12} md={2} sx=
+            {{display:'flex',
+            flexWrap:'nowrap',
+                    }}>
+                <ImageList cols={3} sx={{
+                    display: 'flex',
+                    flexWrap:'nowrap'
+                    
+                }}>
+                    <ImageListItem key={subjectResult.key} sx={{
+                        minWidth: 90,
+                        maxHeight:320,
+                        display:'flex',
+                        flexWrap: 'nowrap',}}>
+                            {subjectResult.title}
+                            <img alt="cover image" src={subjectArticle.subjectUrl}></img>
+                            <Typography component="div">
+                        <Box sx={{fontSize: '2px'}}>
+                            <ImageListItemBar title ={subjectResult.title} sx={{display:'flex', fontSize: 5, flexWrap: 'wrap'
+                            }}/>
+                        </Box>
+                    </Typography>
+                    </ImageListItem>
+                    
+                </ImageList>
             </Grid>
             </>
         )
@@ -158,8 +156,7 @@ export default function MainPage() {
         return (
             <>
 
-            
-            <Grid  item xs={12} md={1} rows={1} sx=
+            <Grid item xs={12} md={1} sx=
             {{display:'flex',
             flexWrap:'nowrap',
                     }}>
@@ -167,36 +164,29 @@ export default function MainPage() {
                     display: 'flex',
                     flexWrap:'nowrap'
                     
-                }}> 
-                 
-                    <ImageListItem key={result.key} sx={{
+                }}>
+                <ImageListItem key={result.key} sx={{
                         minWidth: 90,
                         maxHeight:180,
                         display:'flex',
-                        flexWrap: 'nowrap',
-                        
-                    }}>     
-                        
-                        <img alt="" src={article.url}></img>
-                        <Typography component="div">
-                            <Box sx={{fontSize: '2px'}}>
+                        flexWrap: 'nowrap',}}
+                        >{result.title}
+                    <img alt="" src={article.url} data-subject={result.subject} onClick={() => handleImgClick(result.subject[0])}></img>
+                    <Typography component="div">
+                        <Box sx={{fontSize: '2px'}}>
                             <ImageListItemBar title ={result.title} sx={{display:'flex', fontSize: 5, flexWrap: 'wrap'
                             }}/>
-                            </Box>
-                        </Typography>    
-                    </ImageListItem>
-                    
-               </ImageList>
+                        </Box>
+                    </Typography>
+                </ImageListItem>
+                
 
-            <Grid key={result.key} item xs={12} md={5}>
-                <Item>{result.title}</Item>
-                <Item><img alt="" src={article.url} data-subject={result.subject} onClick={() => handleImgClick(result.subject[0])}></img></Item>
-
+                </ImageList>
             </Grid>
         
             </>
-        )}
-    )
+        )
+    })
 
 
     function handleChange(e) {
@@ -205,105 +195,96 @@ export default function MainPage() {
 
     return (
 
-        <Box sx={{ flexGrow: 1} }>
-        
+        /* <TextField id="term" label="Search" variant="outlined" onChange={handleChange} sx={{margin: '10px',}}/> */
+                            
+
+
+
+    <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" style={{ background: '#A37C4D' }}>
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <img src= "assets\bookworm.png" alt="logo" sx={{maxWidth:300,}}/>
-          
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            Bookworm
-          </Typography>
-          <SearchField>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-              id="term"
-              onChange={handleChange}
-              variant="outlined"
-            />
-          </SearchField>
-        </Toolbar>
-      </AppBar>
+            <Toolbar>
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="open drawer"
+                        sx={{ mr: 2 }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <img src= {logo} alt="logo" width='80px' height='65px'/>
+            
+                <Typography
+                    variant="h6"
+                    noWrap
+                    component="div"
+                    sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }}}
+                    margin='15px'
+                >
+                    Bookworm
+                </Typography>
+                <SearchField>
+                    <SearchIconWrapper>
+                        <SearchIcon />
+                    </SearchIconWrapper>
+                        <StyledInputBase
+                        placeholder="Search…"
+                        inputProps={{ 'aria-label': 'search' }}
+                        id="term"
+                        onChange={handleChange}
+                        variant="outlined"
+                        label="Search"
+                        />
+                        
+                </SearchField>
+            </Toolbar>
+        </AppBar>
 
 
 
 
-            {/* <TextField id="term" label="Search" variant="outlined" onChange={handleChange} sx={{margin: '10px',}}/> */}
-            <Grid container spacing={4}>
+             {/* <TextField id="term" label="Search" variant="outlined" onChange={handleChange}/> */}
+             <Grid container spacing={2}>
+
                 <Grid item xs={12} container spacing={2} sx={{justifyContent:'center', margin:'10px'}}>
                     <Grid item xs={12} md={2} sx={{alignItems:'center'}}>
                         <Item sx= {{backgroundColor:'tan',}}>
                             <Typography>
                                 <Box sx= {{ color:'black', textAlign:"center"}}>
-                                    Author and Title Search:
+                                    Author and Title Search
                                 </Box>
                             </Typography>
                         </Item>
+                    </Grid>
+                </Grid>
+                 
+                 
+                 <Grid item xs={12} container spacing={2}>
+                     {searchResultsMapped}           
+                 </Grid>
+                 
+                 <Grid item xs={12} container spacing={2} sx={{justifyContent:'center', margin:'10px'}}>
+                     <Grid item xs={12} md={2} sx={{alignItems:'center'}}>
+                         <Item sx= {{backgroundColor:'tan',}}>
+                             <Typography>
+                                 <Box sx= {{ color:'black', textAlign: 'center',}}>
+                                     Book Recommendations
+                                 </Box>
+                             </Typography>
+                         </Item>
                             
+                     </Grid>
+                 </Grid>
+                 <Grid item xs={12} container spacing={2}>
+                     
+                     {subjectResultsMapped}
+                     
+                 </Grid>
 
-        <Box sx={{ flexGrow: 1 }}
-        >
-            <TextField id="term" label="Search" variant="outlined" onChange={handleChange}/>
-            <Grid container spacing={2}>
-                <Grid item xs={12} container spacing={2}>
-                    {searchResultsMapped}           
-                </Grid>
-                <Grid item xs={12} container spacing={2}>
-                    <Grid item xs={12} md={4}>
-                    {subjectResultsMapped}
-                    </Grid>
-                </Grid>
-                <Grid item xs={12} container spacing={2}>
-                    <Grid item xs={6} md={3}>
-                        <BookCard/>
-                    </Grid>
-                </Grid>
-                <Grid item xs={12} container spacing={2}>
-                    <Grid item xs = {12} md={4}>
-                        <Item>Other Works By Author</Item>
-
-                    </Grid>
-                </Grid>
-                <Grid item xs={12} container spacing={2}>
-                    {searchResultsMapped}
-                </Grid>
-                <Grid item xs={12} container spacing={2} sx={{justifyContent:'center', margin:'10px'}}>
-                    <Grid item xs={12} md={2} sx={{alignItems:'center'}}>
-                        <Item sx= {{backgroundColor:'tan',}}>
-                            <Typography>
-                                <Box sx= {{ color:'black', textAlign: 'center',}}>
-                                    Recommendations:
-                                </Box>
-                            </Typography>
-                        </Item>
-                            
-                    </Grid>
-                </Grid>
-                
-               
-                
-            </Grid>
-      </Box>
+             </Grid>
+        </Box>
      
-    )
+     )
 
 
-}
+ }
