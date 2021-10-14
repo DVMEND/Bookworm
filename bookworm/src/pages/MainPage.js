@@ -171,7 +171,7 @@ export default function MainPage() {
                         display:'flex',
                         flexWrap: 'nowrap',}}
                         >{result.title}
-                    <img alt="" src={article.url} data-subject={result.subject} onClick={() => handleImgClick(result.subject[0])}></img>
+                    <img alt="" src={article.url} data-subject={result.subject} onClick={() => handleImgClick((result.subject && result.subject.length) ? result.subject[0]:"fiction")}></img>
                     <Typography component="div">
                         <Box sx={{fontSize: '2px'}}>
                             <ImageListItemBar title ={result.title} sx={{display:'flex', fontSize: 5, flexWrap: 'wrap'
